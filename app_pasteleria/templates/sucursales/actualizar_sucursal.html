@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h3>✏️ Actualizar Sucursal</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'realizar_actualizacion_sucursal' sucursal.id_sucursal %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" value="{{ sucursal.nombre }}" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Dirección:</label>
+                            <textarea class="form-control" name="direccion" rows="3" required>{{ sucursal.direccion }}</textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Teléfono:</label>
+                                <input type="text" class="form-control" name="telefono" value="{{ sucursal.telefono|default:'' }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Horario:</label>
+                                <input type="text" class="form-control" name="horario" value="{{ sucursal.horario|default:'' }}" placeholder="Ej: 9:00 AM - 8:00 PM">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Encargado:</label>
+                            <select class="form-select" name="encargado">
+                                <option value="">Sin encargado</option>
+                                {% for empleado in empleados %}
+                                <option value="{{ empleado.id_empleado }}" 
+                                    {% if sucursal.encargado and sucursal.encargado.id_empleado == empleado.id_empleado %}selected{% endif %}>
+                                    {{ empleado.nombre }} - {{ empleado.puesto }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning">Actualizar Sucursal</button>
+                            <a href="{% url 'inicio_sucursales' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

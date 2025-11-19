@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h3>📋 Lista de Órdenes</h3>
+                    <a href="{% url 'agregar_orden' %}" class="btn btn-light">➕ Agregar Orden</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Empleado</th>
+                                    <th>Productos</th>
+                                    <th>Total</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo Pago</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for orden in ordenes %}
+                                <tr>
+                                    <td>{{ orden.id_orden }}</td>
+                                    <td>{{ orden.cliente }}</td>
+                                    <td>{{ orden.empleado.nombre }}</td>
+                                    <td>
+                                        {% for producto in orden.productos.all %}
+                                            {{ producto.nombre }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>${{ orden.total }}</td>
+                                    <td>{{ orden.fecha|date:"d/m/Y H:i" }}</td>
+                                    <td>{{ orden.tipo_pago }}</td>
+                                    <td>
+                                        <a href="{% url 'actualizar_orden' orden.id_orden %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                                        <a href="{% url 'borrar_orden' orden.id_orden %}" class="btn btn-danger btn-sm">🗑️ Borrar</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="8" class="text-center">No hay órdenes registradas</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

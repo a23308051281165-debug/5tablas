@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio' %}">
+            🎂 Sistema de Administración Pastelería
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'inicio' %}">🏠 Inicio</a>
+                </li>
+                
+                <!-- Productos Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        📦 Productos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'inicio_productos' %}">Ver Productos</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Empleados Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        👥 Empleados
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_empleado' %}">Agregar Empleado</a></li>
+                        <li><a class="dropdown-item" href="{% url 'inicio_empleados' %}">Ver Empleados</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Órdenes Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        📋 Órdenes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_orden' %}">Agregar Orden</a></li>
+                        <li><a class="dropdown-item" href="{% url 'inicio_ordenes' %}">Ver Órdenes</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Sucursales Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        🏪 Sucursales
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_sucursal' %}">Agregar Sucursal</a></li>
+                        <li><a class="dropdown-item" href="{% url 'inicio_sucursales' %}">Ver Sucursales</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Proveedores Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        🚚 Proveedores
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'agregar_proveedor' %}">Agregar Proveedor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'inicio_proveedores' %}">Ver Proveedores</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

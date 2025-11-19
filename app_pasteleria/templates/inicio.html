@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="display-4 text-primary">🎂 Bienvenido al Sistema de Pastelería</h1>
+                    <p class="lead">Sistema de administración para gestión de productos, empleados, órdenes y más.</p>
+
+                    
+                    <!-- IMAGEN LOCAL - Cambia "pasteleria.jpg" por el nombre de tu archivo -->
+                    <img src="{% static 'images/imagen.jpg' %}" 
+                        alt="Pastelería" class="img-fluid rounded mt-4" style="max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

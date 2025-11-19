@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3>🗑️ Eliminar Empleado</h3>
+                </div>
+                <div class="card-body text-center">
+                    <h4>¿Estás seguro de que deseas eliminar este empleado?</h4>
+                    <p class="lead"><strong>{{ empleado.nombre }}</strong></p>
+                    <p>Puesto: {{ empleado.puesto }}</p>
+                    <p>Email: {{ empleado.email }}</p>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+                            <a href="{% url 'inicio_empleados' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
